@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(StrassenCPP main.cpp)
 
 # Matrix Library.
+add_subdirectory(Matrix)
 target_link_libraries(StrassenCPP PUBLIC Matrix)
 
 # Included Directories
