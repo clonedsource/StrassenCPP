@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.25)
 
 # Project Name
 project(StrassenCPP VERSION 1.0)
 
 # Specified Standard for C++ (Using 23 for overall support (MSCV 19.44 doesnt support 26), but 20 or 11 could be used.)
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Executable
 add_executable(StrassenCPP main.cpp)

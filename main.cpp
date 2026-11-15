@@ -4,9 +4,12 @@
 #include "Matrix.h"
 
 using namespace std;
+
+// Variable used to track memory used by matrices.
+size_t TRACKED_MEM = 0;
+
 // size_t -> "X B";
 string format_byte_size(const size_t byte_size) {
-
     // Converts it to a sufficiently long type.
     long double doubleized = (long double)byte_size;
     // Takes the Log.
@@ -29,10 +32,17 @@ string format_byte_size(const size_t byte_size) {
 };
 
 int main() {
-    Matrix m(5, 5);
-    string size_mem_str = format_byte_size(m.size_mem());
+
+    Matrix ma(8, 8, new double[64]{1.0});
+    Matrix cm = ma * 3.0;
+    cm *= 5.0;
+    cm /= 3.0;
+    try {
+        cm += ma;
+    } catch (const std::runtime_error &e) {std::cerr << "Error: " << e.what() << std::endl;};
+    string size_mem_str = format_byte_size(ma.size_mem() + cm.size_mem());
     std::cout << size_mem_str << std::endl;
-    std::cout << "Hello\n";
-    std::cout << m.data[0] << std::endl;
+    std::cout << ma.format() << std::endl;
+    std::cout << cm.format() << std::endl;
     return 0;
 }
