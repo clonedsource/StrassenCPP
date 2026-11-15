@@ -1,4 +1,4 @@
 #ifndef MATRIX_H
-#define MATRIX_H
-#include "matrix_impl.cpp"
+#include "matrix.cpp"
+#include "matrix_methods.cpp"
 #endif

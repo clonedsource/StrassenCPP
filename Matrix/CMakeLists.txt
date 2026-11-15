@@ -1,1 +1,1 @@
-add_library(Matrix matrix_impl.cpp)
+add_library(Matrix matrix.cpp matrix_methods.cpp)
