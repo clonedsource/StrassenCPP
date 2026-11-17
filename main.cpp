@@ -2,6 +2,7 @@
 #include <string>
 #include <format>
 #include "Matrix.h"
+#include "matrix_methods.h"
 
 using namespace std;
 
@@ -32,17 +33,14 @@ string format_byte_size(const size_t byte_size) {
 };
 
 int main() {
-
-    Matrix ma(8, 8, new double[64]{1.0});
-    Matrix cm = ma * 3.0;
-    cm *= 5.0;
-    cm /= 3.0;
+    Matrix ma = random_matrix_int(5, 5, -6715, 6715) / 100;
+    Matrix mb = random_matrix_int(5, 5, -8934, 8934) / 100;
     try {
-        cm += ma;
+        mb += ma;
     } catch (const std::runtime_error &e) {std::cerr << "Error: " << e.what() << std::endl;};
-    string size_mem_str = format_byte_size(ma.size_mem() + cm.size_mem());
+    string size_mem_str = format_byte_size(ma.size_mem() + mb.size_mem());
     std::cout << size_mem_str << std::endl;
     std::cout << ma.format() << std::endl;
-    std::cout << cm.format() << std::endl;
+    std::cout << mb.format() << std::endl;
     return 0;
 }
